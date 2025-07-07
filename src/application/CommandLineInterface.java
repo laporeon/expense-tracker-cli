@@ -1,10 +1,12 @@
 package application;
 
+import enums.Colors;
+
 import java.util.Scanner;
 
 public class CommandLineInterface {
     public void showMenu() {
-        System.out.println("" +
+        System.out.printf("%s" +
                 "\n" +
                 "================================\n" +
                 "|         EXPENSE TRACKER      |\n" +
@@ -13,7 +15,7 @@ public class CommandLineInterface {
                 "| 2 - List all expenses        |\n" +
                 "| 0 - Exit                     |\n" +
                 "================================\n" +
-                "");
+                "%s\n", Colors.YELLOW, Colors.RESET);
     }
 
     public void pressEnter(Scanner scanner) {

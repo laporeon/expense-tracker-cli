@@ -1,6 +1,7 @@
 package controller;
 
 import entity.Expense;
+import enums.Colors;
 import helpers.Validator;
 
 import java.math.BigDecimal;
@@ -27,12 +28,12 @@ public class ExpenseController {
             System.out.print("Enter date (i.e YYYY/MM/DD): ");
             date = scanner.nextLine();
             if (!validator.isValidDate(date)) {
-                System.out.println("❌ Invalid date format! Please use YYYY/MM/DD (e.g., 2025/07/07)");
+                System.out.printf("%s❌ Invalid date format! Please use YYYY/MM/DD (e.g., 2025/07/07)%s\n", Colors.RED, Colors.RESET);
             }
         } while (!validator.isValidDate(date));
         Expense expense = new Expense(expenses.size() + 1, amount, description, date);
         expenses.add(expense);
-        System.out.println("\nExpense successfully added!");
+        System.out.printf("\n%s✓ Expense successfully added!%s%n", Colors.GREEN, Colors.RESET);
     }
 
     public List<Expense> list() {
