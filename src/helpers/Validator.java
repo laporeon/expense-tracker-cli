@@ -7,7 +7,7 @@ import java.time.format.DateTimeParseException;
 public class Validator {
     public boolean isValidDate(String date) {
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate parsedDate = LocalDate.parse(date, formatter);
             return true;
         } catch (DateTimeParseException e) {
