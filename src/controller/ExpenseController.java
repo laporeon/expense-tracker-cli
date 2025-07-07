@@ -25,10 +25,10 @@ public class ExpenseController {
         String description = scanner.nextLine();
         String date;
         do {
-            System.out.print("Enter date (i.e YYYY/MM/DD): ");
+            System.out.print("Enter date (i.e yyyy-MM-dd): ");
             date = scanner.nextLine();
             if (!validator.isValidDate(date)) {
-                System.out.printf("%s❌ Invalid date format! Please use YYYY/MM/DD (e.g., 2025/07/07)%s\n", Colors.RED, Colors.RESET);
+                System.out.printf("%s❌ Invalid date format! Please use yyyy-MM-dd (e.g., 2025/07/07)%s\n", Colors.RED, Colors.RESET);
             }
         } while (!validator.isValidDate(date));
         Expense expense = new Expense(expenses.size() + 1, amount, description, date);
@@ -42,14 +42,9 @@ public class ExpenseController {
             return expenses;
         }
 
-        System.out.println("\n------------ ALL EXPENSES ------------");
-        for (Expense expense : expenses) {
-            System.out.println("ID: " + expense.getId() +
-                    " | Amount: $" + expense.getAmount() +
-                    " | Description: " + expense.getDescription() +
-                    " | Date: " + expense.getDate());
-        }
-        System.out.println("------------------------\n");
+        System.out.println("\nID  DATE       DESCRIPTION      AMOUNT");
+        System.out.println("----------------------------------------");
+        expenses.forEach(System.out::println);
         return expenses;
     }
 }
