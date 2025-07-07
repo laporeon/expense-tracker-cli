@@ -46,4 +46,9 @@ public class Expense {
     public void setDate(String date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%-3d %-10s %-15s $%.2f", id, date, description, amount);
+    }
 }
