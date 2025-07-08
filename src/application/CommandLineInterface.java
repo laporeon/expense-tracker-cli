@@ -14,13 +14,14 @@ public class CommandLineInterface {
                 "| 1 - Add an expense           |\n" +
                 "| 2 - List all expenses        |\n" +
                 "| 3 - Delete an expense        |\n" +
+                "| 4 - Summary of expenses      |\n" +
                 "| 0 - Exit                     |\n" +
                 "================================\n" +
-                "%s\n", Colors.YELLOW, Colors.RESET);
+                "%s\n", Colors.BLUE, Colors.RESET);
     }
 
     public void pressEnter(Scanner scanner) {
-        System.out.print("\nPress enter to continue... ");
+        System.out.printf("\n%sPress enter to continue... ", Colors.BOLD);
         scanner.nextLine();
 
         clean();
