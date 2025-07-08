@@ -47,4 +47,18 @@ public class ExpenseController {
         expenses.forEach(System.out::println);
         return expenses;
     }
+
+    public void delete() {
+        System.out.print("\n\n");
+        System.out.print("Enter expense ID: ");
+        int id = scanner.nextInt();
+
+        if (id <= 0 || id > expenses.size()) {
+            System.out.printf("%s❌ Invalid or missing ID. \n", Colors.RED, expenses.size(), Colors.RESET);
+            return;
+        }
+
+        expenses.remove(id - 1);
+        System.out.printf("\n%s✓ Expense successfully deleted!%s%n", Colors.GREEN, Colors.RESET);
+    }
 }
