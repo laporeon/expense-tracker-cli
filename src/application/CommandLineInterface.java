@@ -13,6 +13,7 @@ public class CommandLineInterface {
                 "================================\n" +
                 "| 1 - Add an expense           |\n" +
                 "| 2 - List all expenses        |\n" +
+                "| 3 - Delete an expense        |\n" +
                 "| 0 - Exit                     |\n" +
                 "================================\n" +
                 "%s\n", Colors.YELLOW, Colors.RESET);
