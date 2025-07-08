@@ -27,6 +27,10 @@ public class Main {
                     expenseController.list();
                     commandLineInterface.pressEnter(scanner);
                     break;
+                case 3:
+                    expenseController.delete();
+                    commandLineInterface.pressEnter(scanner);
+                    break;
                 case 0:
                     System.out.println("\nExiting...");
                     exit = true;
