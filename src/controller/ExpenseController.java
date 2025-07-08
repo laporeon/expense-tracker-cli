@@ -37,16 +37,14 @@ public class ExpenseController {
                 Colors.RESET);
     }
 
-    public List<Expense> list() {
-        if (expenses.isEmpty()) {
-            System.out.println("No expenses found.");
-            return expenses;
-        }
-
+    public void list() {
         System.out.println("\nID  DATE       DESCRIPTION      AMOUNT");
         System.out.println("----------------------------------------");
+        if (expenses.isEmpty()) {
+            System.out.println("No expenses found.");
+            return;
+        }
         expenses.forEach(System.out::println);
-        return expenses;
     }
 
     public void delete() {
@@ -55,7 +53,7 @@ public class ExpenseController {
         int id = scanner.nextInt();
 
         if (id <= 0 || id > expenses.size()) {
-            System.out.printf("%s❌ Invalid or missing ID. \n", Colors.RED, expenses.size(), Colors.RESET);
+            System.out.printf("%s❌ Invalid or missing ID.%s\n", Colors.RED, Colors.RESET);
             return;
         }
 
