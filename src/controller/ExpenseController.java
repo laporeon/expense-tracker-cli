@@ -38,8 +38,13 @@ public class ExpenseController {
     }
 
     public void list() {
-        System.out.println("\nID  DATE       DESCRIPTION      AMOUNT");
-        System.out.println("----------------------------------------");
+        System.out.printf(
+                "\n%s%-5s %-20s %-10s %-12s%s\n%s\n",
+                Colors.BOLD, "ID", "DESCRIPTION", "AMOUNT", "DATE", Colors.RESET,
+                "--------------------------------------------------"
+        );
+
+
         if (expenses.isEmpty()) {
             System.out.println("No expenses found.");
             return;

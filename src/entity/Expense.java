@@ -1,7 +1,5 @@
 package entity;
 
-import java.math.BigDecimal;
-
 public class Expense {
     private int id;
     private double amount;
@@ -49,6 +47,7 @@ public class Expense {
 
     @Override
     public String toString() {
-        return String.format("%-3d %-10s %-15s $%.2f", id, date, description, amount);
+        return String.format("%-5d %-20s $%-9.2f %-12s", id, description, amount, date);
     }
+
 }
