@@ -4,7 +4,6 @@ import entity.Expense;
 import enums.Colors;
 import helpers.Validator;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -28,12 +27,14 @@ public class ExpenseController {
             System.out.print("Enter date (i.e yyyy-MM-dd): ");
             date = scanner.nextLine();
             if (!validator.isValidDate(date)) {
-                System.out.printf("%s❌ Invalid date format! Please use yyyy-MM-dd (e.g., 2025/07/07)%s\n", Colors.RED, Colors.RESET);
+                System.out.printf("%s❌ Invalid date format! Please use yyyy-MM-dd (e.g., 2025-07-07)%s\n", Colors.RED
+                        , Colors.RESET);
             }
         } while (!validator.isValidDate(date));
         Expense expense = new Expense(expenses.size() + 1, amount, description, date);
         expenses.add(expense);
-        System.out.printf("\n%s✓ Expense successfully added!%s%n", Colors.GREEN, Colors.RESET);
+        System.out.printf("\n%s✓ Expense successfully added! (ID: %d) %s%n", Colors.GREEN, expense.getId(), 
+                Colors.RESET);
     }
 
     public List<Expense> list() {
@@ -60,5 +61,15 @@ public class ExpenseController {
 
         expenses.remove(id - 1);
         System.out.printf("\n%s✓ Expense successfully deleted!%s%n", Colors.GREEN, Colors.RESET);
+    }
+
+    public void summary() {
+        double total = 0;
+
+        for(Expense expense : expenses) {
+            total += expense.getAmount();
+        }
+
+        System.out.printf("\n%sTotal expenses: $ %.2f%s\n", Colors.GREEN, total, Colors.RESET);
     }
 }
