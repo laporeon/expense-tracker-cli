@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 
 public class Expense {
     private int id;
-    private BigDecimal amount;
+    private double amount;
     private String description;
     private String date;
 
-    public Expense(int id, BigDecimal amount, String description, String date) {
+    public Expense(int id, double amount, String description, String date) {
         this.id = id;
         this.amount = amount;
         this.description = description;
@@ -23,11 +23,11 @@ public class Expense {
         this.id = id;
     }
 
-    public BigDecimal getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

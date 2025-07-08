@@ -19,7 +19,7 @@ public class ExpenseController {
     public void add() {
         System.out.print("\n\n");
         System.out.print("Enter expense amount: ");
-        BigDecimal amount = scanner.nextBigDecimal();
+        double amount = scanner.nextDouble();
         scanner.nextLine();
         System.out.print("Enter description: ");
         String description = scanner.nextLine();
