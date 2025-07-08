@@ -14,4 +14,8 @@ public class Validator {
             return false;
         }
     }
+
+    public boolean isValidId(int id, int expensesSize) {
+        return id > 0 && id < expensesSize;
+    }
 }

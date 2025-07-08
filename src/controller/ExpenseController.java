@@ -52,12 +52,14 @@ public class ExpenseController {
         expenses.forEach(System.out::println);
     }
 
+
     public void delete() {
         System.out.print("\n\n");
         System.out.print("Enter expense ID: ");
         int id = scanner.nextInt();
+        scanner.nextLine();
 
-        if (id <= 0 || id > expenses.size()) {
+        if (!validator.isValidId(id, expenses.size())) {
             System.out.printf("%s❌ Invalid or missing ID.%s\n", Colors.RED, Colors.RESET);
             return;
         }
@@ -75,4 +77,5 @@ public class ExpenseController {
 
         System.out.printf("\n%sTotal expenses: $ %.2f%s\n", Colors.GREEN, total, Colors.RESET);
     }
+
 }
