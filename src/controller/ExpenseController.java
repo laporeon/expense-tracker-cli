@@ -2,7 +2,7 @@ package controller;
 
 import entity.Expense;
 import enums.Color;
-import enums.ExpenseAttributes;
+import enums.ExpenseField;
 import helpers.Validator;
 
 import java.util.ArrayList;
@@ -18,25 +18,20 @@ public class ExpenseController {
 
     public void add() {
         System.out.print("\n\n");
-        double amount = (double) validator.validateInput(scanner, "Enter expense amount: ", "Invalid amount!",
-                ExpenseAttributes.AMOUNT);
-        String description = (String) validator.validateInput(scanner, "Enter description: ",
-                "Invalid description! Description cannot be null and must have at least 3 characters",
-                ExpenseAttributes.DESCRIPTION);
-        String date = (String) validator.validateInput(scanner, "Enter date (i.e yyyy-MM-dd): ", "Invalid date " +
-                        "format! Please use yyyy-MM-dd (e.g., 2025-07-07)", ExpenseAttributes.DATE);
+        double amount = (double) validator.validateInput(scanner, ExpenseField.AMOUNT.getPromptMessage(),
+                ExpenseField.AMOUNT.getErrorMessage(), ExpenseField.AMOUNT);
+        String description = (String) validator.validateInput(scanner, ExpenseField.DESCRIPTION.getPromptMessage(),
+                ExpenseField.DESCRIPTION.getErrorMessage(), ExpenseField.DESCRIPTION);
+        String date = (String) validator.validateInput(scanner, ExpenseField.DATE.getPromptMessage(),
+                ExpenseField.DATE.getErrorMessage(), ExpenseField.DATE);
         Expense expense = new Expense(expenses.size() + 1, amount, description, date);
         expenses.add(expense);
-        System.out.printf("\n%s✓ Expense successfully added! (ID: %d) %s%n", Color.GREEN, expense.getId(),
-                Color.RESET);
+        System.out.printf("\n%s✓ Expense successfully added! (ID: %d) %s%n", Color.GREEN, expense.getId(), Color.RESET);
     }
 
     public void list() {
-        System.out.printf(
-                "\n%s%-5s %-20s %-10s %-12s%s\n%s\n",
-                Color.BOLD, "ID", "DESCRIPTION", "AMOUNT", "DATE", Color.RESET,
-                "--------------------------------------------------"
-        );
+        System.out.printf("\n%s%-5s %-20s %-10s %-12s%s\n%s\n", Color.BOLD, "ID", "DESCRIPTION", "AMOUNT", "DATE",
+                Color.RESET, "--------------------------------------------------");
 
         if (expenses.isEmpty()) {
             System.out.println("No expenses found.");
@@ -58,13 +53,12 @@ public class ExpenseController {
 
         Expense expense = expenses.get(id - 1);
 
-        double newAmount = (double) validator.validateInput(scanner, "Enter new amount: ", "Invalid amount!",
-                ExpenseAttributes.AMOUNT);
+        double newAmount = (double) validator.validateInput(scanner, "Enter new amount: ",
+                ExpenseField.AMOUNT.getErrorMessage(), ExpenseField.AMOUNT);
         String newDescription = (String) validator.validateInput(scanner, "Enter new description: ",
-                "Invalid description! Description cannot be null and must have at least 3 characters",
-                ExpenseAttributes.DESCRIPTION);
-        String newDate = (String) validator.validateInput(scanner, "Enter new date (i.e yyyy-MM-dd): ", "Invalid date " +
-                "format! Please use yyyy-MM-dd (e.g., 2025-07-07)", ExpenseAttributes.DATE);
+                ExpenseField.DESCRIPTION.getErrorMessage(), ExpenseField.DESCRIPTION);
+        String newDate = (String) validator.validateInput(scanner, "Enter new date (i.e yyyy-MM-dd): ",
+                ExpenseField.DATE.getErrorMessage(), ExpenseField.DATE);
 
         expense.setAmount(newAmount);
         expense.setDescription(newDescription);
