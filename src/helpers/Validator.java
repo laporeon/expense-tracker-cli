@@ -7,8 +7,7 @@ import java.time.format.DateTimeParseException;
 public class Validator {
     public boolean isValidDate(String date) {
         try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate parsedDate = LocalDate.parse(date, formatter);
+            LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             return true;
         } catch (DateTimeParseException e) {
             return false;
@@ -16,6 +15,6 @@ public class Validator {
     }
 
     public boolean isValidId(int id, int expensesSize) {
-        return id > 0 && id < expensesSize;
+        return id > 0 && id <= expensesSize;
     }
 }
