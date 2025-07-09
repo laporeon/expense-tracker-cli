@@ -50,7 +50,40 @@ public class ExpenseController {
         }
         expenses.forEach(System.out::println);
     }
-    
+
+    public void update() {
+        System.out.print("\n\n");
+        System.out.print("Enter the ID of the expense you want to update: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        if (!validator.isValidId(id, expenses.size())) {
+            System.out.printf("%s❌ Invalid or missing ID.%s\n", Colors.RED, Colors.RESET);
+            return;
+        }
+
+        Expense expense = expenses.get(id - 1);
+
+        System.out.print("Enter new expense amount: ");
+        double newAmount = scanner.nextDouble();
+        scanner.nextLine();
+        System.out.print("Enter new description: ");
+        String newDescription = scanner.nextLine();
+        String newDate;
+        do {
+            System.out.print("Enter new date (i.e yyyy-MM-dd): ");
+            newDate = scanner.nextLine();
+            if (!validator.isValidDate(newDate)) {
+                System.out.printf("%s❌ Invalid date format! Please use yyyy-MM-dd (e.g., 2025-07-07)%s\n", Colors.RED
+                        , Colors.RESET);
+            }
+        } while (!validator.isValidDate(newDate));
+        expense.setAmount(newAmount);
+        expense.setDescription(newDescription);
+        expense.setDate(newDate);
+        System.out.printf("\n%s✓ Expense successfully updated! %s%n", Colors.GREEN, Colors.RESET);
+    }
+
     public void delete() {
         System.out.print("\n\n");
         System.out.print("Enter expense ID: ");
