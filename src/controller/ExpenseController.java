@@ -44,15 +44,13 @@ public class ExpenseController {
                 "--------------------------------------------------"
         );
 
-
         if (expenses.isEmpty()) {
             System.out.println("No expenses found.");
             return;
         }
         expenses.forEach(System.out::println);
     }
-
-
+    
     public void delete() {
         System.out.print("\n\n");
         System.out.print("Enter expense ID: ");
@@ -69,11 +67,7 @@ public class ExpenseController {
     }
 
     public void summary() {
-        double total = 0;
-
-        for(Expense expense : expenses) {
-            total += expense.getAmount();
-        }
+        double total = expenses.stream().mapToDouble(Expense::getAmount).sum();
 
         System.out.printf("\n%sTotal expenses: $ %.2f%s\n", Colors.GREEN, total, Colors.RESET);
     }
