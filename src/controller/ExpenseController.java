@@ -2,6 +2,7 @@ package controller;
 
 import entity.Expense;
 import enums.Colors;
+import enums.ExpenseAttributes;
 import helpers.Validator;
 
 import java.util.ArrayList;
@@ -17,20 +18,13 @@ public class ExpenseController {
 
     public void add() {
         System.out.print("\n\n");
-        System.out.print("Enter expense amount: ");
-        double amount = scanner.nextDouble();
-        scanner.nextLine();
-        System.out.print("Enter description: ");
-        String description = scanner.nextLine();
-        String date;
-        do {
-            System.out.print("Enter date (i.e yyyy-MM-dd): ");
-            date = scanner.nextLine();
-            if (!validator.isValidDate(date)) {
-                System.out.printf("%s❌ Invalid date format! Please use yyyy-MM-dd (e.g., 2025-07-07)%s\n", Colors.RED
-                        , Colors.RESET);
-            }
-        } while (!validator.isValidDate(date));
+        double amount = (double) validator.validateInput(scanner, "Enter expense amount: ", "Invalid amount!",
+                ExpenseAttributes.AMOUNT);
+        String description = (String) validator.validateInput(scanner, "Enter description: ",
+                "Invalid description! Description cannot be null and must have at least 3 characters",
+                ExpenseAttributes.DESCRIPTION);
+        String date = (String) validator.validateInput(scanner, "Enter date (i.e yyyy-MM-dd): ", "Invalid date " +
+                        "format! Please use yyyy-MM-dd (e.g., 2025-07-07)", ExpenseAttributes.DATE);
         Expense expense = new Expense(expenses.size() + 1, amount, description, date);
         expenses.add(expense);
         System.out.printf("\n%s✓ Expense successfully added! (ID: %d) %s%n", Colors.GREEN, expense.getId(), 
@@ -64,23 +58,18 @@ public class ExpenseController {
 
         Expense expense = expenses.get(id - 1);
 
-        System.out.print("Enter new expense amount: ");
-        double newAmount = scanner.nextDouble();
-        scanner.nextLine();
-        System.out.print("Enter new description: ");
-        String newDescription = scanner.nextLine();
-        String newDate;
-        do {
-            System.out.print("Enter new date (i.e yyyy-MM-dd): ");
-            newDate = scanner.nextLine();
-            if (!validator.isValidDate(newDate)) {
-                System.out.printf("%s❌ Invalid date format! Please use yyyy-MM-dd (e.g., 2025-07-07)%s\n", Colors.RED
-                        , Colors.RESET);
-            }
-        } while (!validator.isValidDate(newDate));
+        double newAmount = (double) validator.validateInput(scanner, "Enter new amount: ", "Invalid amount!",
+                ExpenseAttributes.AMOUNT);
+        String newDescription = (String) validator.validateInput(scanner, "Enter new description: ",
+                "Invalid description! Description cannot be null and must have at least 3 characters",
+                ExpenseAttributes.DESCRIPTION);
+        String newDate = (String) validator.validateInput(scanner, "Enter new date (i.e yyyy-MM-dd): ", "Invalid date " +
+                "format! Please use yyyy-MM-dd (e.g., 2025-07-07)", ExpenseAttributes.DATE);
+
         expense.setAmount(newAmount);
         expense.setDescription(newDescription);
         expense.setDate(newDate);
+
         System.out.printf("\n%s✓ Expense successfully updated! %s%n", Colors.GREEN, Colors.RESET);
     }
 
