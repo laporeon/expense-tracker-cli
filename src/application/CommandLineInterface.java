@@ -29,10 +29,14 @@ public class CommandLineInterface {
                     pressEnter(scanner);
                     break;
                 case 3:
-                    expenseController.delete();
+                    expenseController.update();
                     pressEnter(scanner);
                     break;
                 case 4:
+                    expenseController.delete();
+                    pressEnter(scanner);
+                    break;
+                case 5:
                     expenseController.summary();
                     pressEnter(scanner);
                     break;
@@ -56,8 +60,9 @@ public class CommandLineInterface {
                 "================================\n" +
                 "| 1 - Add an expense           |\n" +
                 "| 2 - List all expenses        |\n" +
-                "| 3 - Delete an expense        |\n" +
-                "| 4 - Summary of expenses      |\n" +
+                "| 3 - Update an expense        |\n" +
+                "| 4 - Delete an expense        |\n" +
+                "| 5 - Summary of expenses      |\n" +
                 "| 0 - Exit                     |\n" +
                 "================================\n" +
                 "%s\n", Colors.BLUE, Colors.RESET);
