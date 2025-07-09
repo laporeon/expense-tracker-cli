@@ -30,11 +30,11 @@ public class Validator {
         return id > 0 && id <= expensesSize;
     }
 
-    public Object validateInput(Scanner scanner, String prompt, String errorMessage, ExpenseField attribute) {
+    public Object validateInput(Scanner scanner, String prompt, String errorMessage, ExpenseField expenseField) {
         while(true) {
         System.out.print(prompt);
 
-            switch (attribute) {
+            switch (expenseField) {
                 case AMOUNT:
                     double amount = scanner.nextDouble();
                     scanner.nextLine();
