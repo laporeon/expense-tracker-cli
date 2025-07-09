@@ -1,7 +1,7 @@
 package helpers;
 
 import enums.Color;
-import enums.ExpenseAttributes;
+import enums.ExpenseField;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -30,7 +30,7 @@ public class Validator {
         return id > 0 && id <= expensesSize;
     }
 
-    public Object validateInput(Scanner scanner, String prompt, String errorMessage, ExpenseAttributes attribute) {
+    public Object validateInput(Scanner scanner, String prompt, String errorMessage, ExpenseField attribute) {
         while(true) {
         System.out.print(prompt);
 
