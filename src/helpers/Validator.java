@@ -1,6 +1,6 @@
 package helpers;
 
-import enums.Colors;
+import enums.Color;
 import enums.ExpenseAttributes;
 
 import java.time.LocalDate;
@@ -50,7 +50,7 @@ public class Validator {
                     break;
             }
 
-            System.out.printf("%s❌ %s%s\n", Colors.RED, errorMessage, Colors.RESET);
+            System.out.printf("%s❌ %s%s\n", Color.RED, errorMessage, Color.RESET);
         }
     }
 }

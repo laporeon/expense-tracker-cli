@@ -1,7 +1,7 @@
 package controller;
 
 import entity.Expense;
-import enums.Colors;
+import enums.Color;
 import enums.ExpenseAttributes;
 import helpers.Validator;
 
@@ -27,14 +27,14 @@ public class ExpenseController {
                         "format! Please use yyyy-MM-dd (e.g., 2025-07-07)", ExpenseAttributes.DATE);
         Expense expense = new Expense(expenses.size() + 1, amount, description, date);
         expenses.add(expense);
-        System.out.printf("\n%s✓ Expense successfully added! (ID: %d) %s%n", Colors.GREEN, expense.getId(), 
-                Colors.RESET);
+        System.out.printf("\n%s✓ Expense successfully added! (ID: %d) %s%n", Color.GREEN, expense.getId(),
+                Color.RESET);
     }
 
     public void list() {
         System.out.printf(
                 "\n%s%-5s %-20s %-10s %-12s%s\n%s\n",
-                Colors.BOLD, "ID", "DESCRIPTION", "AMOUNT", "DATE", Colors.RESET,
+                Color.BOLD, "ID", "DESCRIPTION", "AMOUNT", "DATE", Color.RESET,
                 "--------------------------------------------------"
         );
 
@@ -52,7 +52,7 @@ public class ExpenseController {
         scanner.nextLine();
 
         if (!validator.isValidId(id, expenses.size())) {
-            System.out.printf("%s❌ Invalid or missing ID.%s\n", Colors.RED, Colors.RESET);
+            System.out.printf("%s❌ Invalid or missing ID.%s\n", Color.RED, Color.RESET);
             return;
         }
 
@@ -70,7 +70,7 @@ public class ExpenseController {
         expense.setDescription(newDescription);
         expense.setDate(newDate);
 
-        System.out.printf("\n%s✓ Expense successfully updated! %s%n", Colors.GREEN, Colors.RESET);
+        System.out.printf("\n%s✓ Expense successfully updated! %s%n", Color.GREEN, Color.RESET);
     }
 
     public void delete() {
@@ -80,18 +80,18 @@ public class ExpenseController {
         scanner.nextLine();
 
         if (!validator.isValidId(id, expenses.size())) {
-            System.out.printf("%s❌ Invalid or missing ID.%s\n", Colors.RED, Colors.RESET);
+            System.out.printf("%s❌ Invalid or missing ID.%s\n", Color.RED, Color.RESET);
             return;
         }
 
         expenses.remove(id - 1);
-        System.out.printf("\n%s✓ Expense successfully deleted!%s%n", Colors.GREEN, Colors.RESET);
+        System.out.printf("\n%s✓ Expense successfully deleted!%s%n", Color.GREEN, Color.RESET);
     }
 
     public void summary() {
         double total = expenses.stream().mapToDouble(Expense::getAmount).sum();
 
-        System.out.printf("\n%sTotal expenses: $ %.2f%s\n", Colors.GREEN, total, Colors.RESET);
+        System.out.printf("\n%sTotal expenses: $ %.2f%s\n", Color.GREEN, total, Color.RESET);
     }
 
 }

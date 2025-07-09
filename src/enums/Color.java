@@ -1,6 +1,6 @@
 package enums;
 
-public enum Colors {
+public enum Color {
     BOLD("\u001B[1m"),
     UNDERLINE("\u001B[4m"),
     RED("\u001B[31m"),
@@ -13,7 +13,7 @@ public enum Colors {
 
     private final String ansiCode;
 
-    Colors(String ansiCode) {
+    Color(String ansiCode) {
         this.ansiCode = ansiCode;
     }
 

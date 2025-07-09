@@ -1,7 +1,7 @@
 package application;
 
 import controller.ExpenseController;
-import enums.Colors;
+import enums.Color;
 
 import java.util.Scanner;
 
@@ -15,7 +15,7 @@ public class CommandLineInterface {
 
         while (!exit) {
             showMenu();
-            System.out.printf("%sChoose an option: %s", Colors.BOLD, Colors.RESET);
+            System.out.printf("%sChoose an option: %s", Color.BOLD, Color.RESET);
             int option = scanner.nextInt();
             scanner.nextLine();
 
@@ -45,7 +45,7 @@ public class CommandLineInterface {
                     exit = true;
                     break;
                 default:
-                    System.out.printf("%sInvalid option. Try again...%s", Colors.RED, Colors.RESET);
+                    System.out.printf("%sInvalid option. Try again...%s", Color.RED, Color.RESET);
                     break;
             }
         }
@@ -65,11 +65,11 @@ public class CommandLineInterface {
                 "| 5 - Summary of expenses      |\n" +
                 "| 0 - Exit                     |\n" +
                 "================================\n" +
-                "%s\n", Colors.BLUE, Colors.RESET);
+                "%s\n", Color.BLUE, Color.RESET);
     }
 
     private void pressEnter(Scanner scanner) {
-        System.out.printf("\n%sPress enter to continue... ", Colors.BOLD);
+        System.out.printf("\n%sPress enter to continue... ", Color.BOLD);
         scanner.nextLine();
 
         clean();
