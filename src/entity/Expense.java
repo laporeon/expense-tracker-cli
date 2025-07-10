@@ -45,6 +45,10 @@ public class Expense {
         this.date = date;
     }
 
+    public String toCsvString() {
+        return String.format("\n%s;%s;%s;%s", id, amount, description, date);
+    }
+
     @Override
     public String toString() {
         return String.format("%-5d %-20s $%-9.2f %-12s", id, description, amount, date);
