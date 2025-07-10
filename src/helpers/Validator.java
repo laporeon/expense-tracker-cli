@@ -1,5 +1,6 @@
 package helpers;
 
+import controller.FileController;
 import enums.Color;
 import enums.ExpenseField;
 
@@ -9,7 +10,7 @@ import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class Validator {
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     private boolean isValidDate(String date) {
         try {
@@ -28,11 +29,12 @@ public class Validator {
         return description != null && !description.trim().isEmpty() && (description.trim().length() >= 3 && description.trim().length() <= 30);
     }
 
-    private boolean isValidId(int id, int expensesSize) {
+    private boolean isValidId(int id) {
+        int expensesSize = new FileController().readFile().size();
         return id > 0 && id <= expensesSize;
     }
 
-    public Object validateInput(String prompt, String errorMessage, ExpenseField expenseField, int expensesSize) {
+    public Object validateInput(String prompt, String errorMessage, ExpenseField expenseField) {
         while(true) {
         System.out.print(prompt);
 
@@ -53,7 +55,7 @@ public class Validator {
                 case ID:
                     int id = scanner.nextInt();
                     scanner.nextLine();
-                    if (isValidId(id, expensesSize)) return id;
+                    if (isValidId(id)) return id;
                     break;
             }
 
