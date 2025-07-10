@@ -7,12 +7,12 @@ import java.util.Scanner;
 
 public class CommandLineInterface {
 
+    Scanner scanner = new Scanner(System.in);
+    ExpenseController expenseController = new ExpenseController();
+
     public void start() {
-        Scanner scanner = new Scanner(System.in);
         boolean exit = false;
-
-        ExpenseController expenseController = new ExpenseController();
-
+        
         while (!exit) {
             showMenu();
             System.out.printf("%sChoose an option: %s", Color.BOLD, Color.RESET);
@@ -22,23 +22,23 @@ public class CommandLineInterface {
             switch (option) {
                 case 1:
                     expenseController.add();
-                    pressEnter(scanner);
+                    pressEnter();
                     break;
                 case 2:
                     expenseController.list();
-                    pressEnter(scanner);
+                    pressEnter();
                     break;
                 case 3:
                     expenseController.update();
-                    pressEnter(scanner);
+                    pressEnter();
                     break;
                 case 4:
                     expenseController.delete();
-                    pressEnter(scanner);
+                    pressEnter();
                     break;
                 case 5:
                     expenseController.summary();
-                    pressEnter(scanner);
+                    pressEnter();
                     break;
                 case 0:
                     System.out.println("\nExiting...");
@@ -68,7 +68,7 @@ public class CommandLineInterface {
                 "%s\n", Color.BLUE, Color.RESET);
     }
 
-    private void pressEnter(Scanner scanner) {
+    private void pressEnter() {
         System.out.printf("\n%sPress enter to continue... ", Color.BOLD);
         scanner.nextLine();
 
