@@ -7,22 +7,19 @@ import helpers.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class ExpenseController {
     public List<Expense> expenses = new ArrayList<Expense>();
 
     Validator validator = new Validator();
 
-    Scanner scanner = new Scanner(System.in);
-
     public void add() {
         System.out.print("\n\n");
-        double amount = (double) validator.validateInput(scanner, ExpenseField.AMOUNT.getPromptMessage(),
+        double amount = (double) validator.validateInput(ExpenseField.AMOUNT.getPromptMessage(),
                 ExpenseField.AMOUNT.getErrorMessage(), ExpenseField.AMOUNT, expenses.size());
-        String description = (String) validator.validateInput(scanner, ExpenseField.DESCRIPTION.getPromptMessage(),
+        String description = (String) validator.validateInput(ExpenseField.DESCRIPTION.getPromptMessage(),
                 ExpenseField.DESCRIPTION.getErrorMessage(), ExpenseField.DESCRIPTION, expenses.size());
-        String date = (String) validator.validateInput(scanner, ExpenseField.DATE.getPromptMessage(),
+        String date = (String) validator.validateInput(ExpenseField.DATE.getPromptMessage(),
                 ExpenseField.DATE.getErrorMessage(), ExpenseField.DATE, expenses.size());
         Expense expense = new Expense(expenses.size() + 1, amount, description, date);
         expenses.add(expense);
@@ -42,16 +39,16 @@ public class ExpenseController {
 
     public void update() {
         System.out.print("\n\n");
-        int id = (int) validator.validateInput(scanner, ExpenseField.ID.getPromptMessage(),
-                ExpenseField.ID.getErrorMessage(), ExpenseField.ID, expenses.size());
+        int id = (int) validator.validateInput(ExpenseField.ID.getPromptMessage(), ExpenseField.ID.getErrorMessage(),
+                ExpenseField.ID, expenses.size());
 
         Expense expense = expenses.get(id - 1);
 
-        double newAmount = (double) validator.validateInput(scanner, "Enter new amount: ",
+        double newAmount = (double) validator.validateInput("Enter new amount: ",
                 ExpenseField.AMOUNT.getErrorMessage(), ExpenseField.AMOUNT, expenses.size());
-        String newDescription = (String) validator.validateInput(scanner, "Enter new description: ",
+        String newDescription = (String) validator.validateInput("Enter new description: ",
                 ExpenseField.DESCRIPTION.getErrorMessage(), ExpenseField.DESCRIPTION, expenses.size());
-        String newDate = (String) validator.validateInput(scanner, "Enter new date (i.e yyyy-MM-dd): ",
+        String newDate = (String) validator.validateInput("Enter new date (i.e yyyy-MM-dd): ",
                 ExpenseField.DATE.getErrorMessage(), ExpenseField.DATE, expenses.size());
 
         expense.setAmount(newAmount);
@@ -63,8 +60,8 @@ public class ExpenseController {
 
     public void delete() {
         System.out.print("\n\n");
-        int id = (int) validator.validateInput(scanner, ExpenseField.ID.getPromptMessage(),
-                ExpenseField.ID.getErrorMessage(), ExpenseField.ID, expenses.size());
+        int id = (int) validator.validateInput(ExpenseField.ID.getPromptMessage(), ExpenseField.ID.getErrorMessage(),
+                ExpenseField.ID, expenses.size());
 
         expenses.remove(id - 1);
         System.out.printf("\n%s✓ Expense successfully deleted!%s%n", Color.GREEN, Color.RESET);

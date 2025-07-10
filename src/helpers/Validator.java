@@ -9,6 +9,8 @@ import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class Validator {
+    private Scanner scanner = new Scanner(System.in);
+
     private boolean isValidDate(String date) {
         try {
             LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
@@ -30,7 +32,7 @@ public class Validator {
         return id > 0 && id <= expensesSize;
     }
 
-    public Object validateInput(Scanner scanner, String prompt, String errorMessage, ExpenseField expenseField, int expensesSize) {
+    public Object validateInput(String prompt, String errorMessage, ExpenseField expenseField, int expensesSize) {
         while(true) {
         System.out.print(prompt);
 
