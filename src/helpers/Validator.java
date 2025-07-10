@@ -26,11 +26,11 @@ public class Validator {
         return description != null && !description.trim().isEmpty() && (description.trim().length() >= 3 && description.trim().length() <= 30);
     }
 
-    public boolean isValidId(int id, int expensesSize) {
+    private boolean isValidId(int id, int expensesSize) {
         return id > 0 && id <= expensesSize;
     }
 
-    public Object validateInput(Scanner scanner, String prompt, String errorMessage, ExpenseField expenseField) {
+    public Object validateInput(Scanner scanner, String prompt, String errorMessage, ExpenseField expenseField, int expensesSize) {
         while(true) {
         System.out.print(prompt);
 
@@ -47,6 +47,11 @@ public class Validator {
                 case DATE:
                     String date = scanner.nextLine();
                     if (isValidDate(date)) return date;
+                    break;
+                case ID:
+                    int id = scanner.nextInt();
+                    scanner.nextLine();
+                    if (isValidId(id, expensesSize)) return id;
                     break;
             }
 
