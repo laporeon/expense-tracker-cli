@@ -73,7 +73,8 @@ public class ExpenseController {
 
         List<Expense> expenses = fileController.readFile();
 
-        expenses.removeIf(expense -> expense.getId() == id);
+        expenses.remove(id - 1);
+
         fileController.updateFile(expenses);
         System.out.printf("\n%s✓ Expense successfully deleted!%s%n", Color.GREEN, Color.RESET);
     }
